@@ -1,5 +1,13 @@
 ---
+import "../styles/global.css";
 const { title, url } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
+<li class="mb-4">
+  <a
+    href={url}
+    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium underline transition-colors"
+  >
+    {title}
+  </a>
+</li>

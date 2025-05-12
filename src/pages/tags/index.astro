@@ -1,41 +1,28 @@
 ---
+import "../../styles/global.css";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const allPosts = await getCollection("blog");
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
-
 const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="tags">
+  <p class="mb-8 text-lg text-gray-700 dark:text-gray-300">
+    Browse all blog posts by tag:
+  </p>
+
+  <div class="flex flex-wrap gap-3">
     {
       tags.map((tag) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
+        <a
+          href={`/tags/${tag}`}
+          class="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 text-gray-800 dark:text-gray-200 hover:text-blue-800 dark:hover:text-blue-200 rounded-lg transition-colors"
+        >
+          #{tag}
+        </a>
       ))
     }
   </div>
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539f;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>

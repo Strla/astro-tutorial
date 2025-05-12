@@ -3,78 +3,112 @@ import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
-
 const identity = {
   firstName: "Sarah",
   country: "Canada",
   occupation: "Technical Writer",
   hobbies: ["photography", "birdwatching", "baseball"],
 };
-
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
 const happy = true;
 const finished = true;
 const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>... and my new Astro site!</h2>
+  <div class="prose dark:prose-invert lg:prose-lg max-w-none">
+    <p>... and my new Astro site!</p>
 
-  <p>
-    I am working through Astro's introductory tutorial. This is the second page
-    on my website, and it's the first one I built myself!
-  </p>
+    <p>
+      I am working through Astro's introductory tutorial. This is the second
+      page on my website, and it's the first one I built myself!
+    </p>
 
-  <p>
-    This site will update as I complete more of the tutorial, so keep checking
-    back and see how my journey is going!
-  </p>
+    <p>
+      This site will update as I complete more of the tutorial, so keep checking
+      back and see how my journey is going!
+    </p>
 
-  <p>Here are a few facts about me:</p>
-  <ul>
-    <li>My name is {identity.firstName}.</li>
-    <li>
-      I live in {identity.country} and I work as a {identity.occupation}.
-    </li>
-    {
-      identity.hobbies.length >= 2 && (
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md my-8">
+      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+        Here are a few facts about me:
+      </h2>
+
+      <ul class="space-y-2 text-gray-700 dark:text-gray-300">
         <li>
-          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+          My name is <span class="font-medium text-blue-600 dark:text-blue-400"
+            >{identity.firstName}</span
+          >.
         </li>
-      )
-    }
-  </ul>
-  <p>My skills are:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
+        <li>
+          I live in <span class="font-medium text-blue-600 dark:text-blue-400"
+            >{identity.country}</span
+          > and I work as a <span
+            class="font-medium text-blue-600 dark:text-blue-400"
+            >{identity.occupation}</span
+          >.
+        </li>
+        {
+          identity.hobbies.length >= 2 && (
+            <li>
+              Two of my hobbies are:{" "}
+              <span class="font-medium text-blue-600 dark:text-blue-400">
+                {identity.hobbies[0]}
+              </span>{" "}
+              and{" "}
+              <span class="font-medium text-blue-600 dark:text-blue-400">
+                {identity.hobbies[1]}
+              </span>
+            </li>
+          )
+        }
+      </ul>
+    </div>
 
-  {happy && <p>I am happy to be learning Astro!</p>}
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md my-8">
+      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+        My skills:
+      </h2>
 
-  {finished && <p>I finished this tutorial!</p>}
+      <div class="flex flex-wrap gap-2">
+        {
+          skills.map((skill) => (
+            <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </div>
 
-  {
-    goal === 3 ? (
-      <p>My goal is to finish in 3 days.</p>
-    ) : (
-      <p>My goal is not 3 days.</p>
-    )
-  }
+    <div class="space-y-4 my-8">
+      {
+        happy && (
+          <p class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 p-4 rounded-lg">
+            I am happy to be learning Astro!
+          </p>
+        )
+      }
+
+      {
+        finished && (
+          <p class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 p-4 rounded-lg">
+            I finished this tutorial!
+          </p>
+        )
+      }
+
+      {
+        goal === 3 ? (
+          <p class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 p-4 rounded-lg">
+            My goal is to finish in 3 days.
+          </p>
+        ) : (
+          <p class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 p-4 rounded-lg">
+            My goal is not 3 days.
+          </p>
+        )
+      }
+    </div>
+  </div>
 </BaseLayout>
-
-<style is:global define:vars={{ skillColor, fontWeight, textCase }}>
-  h1 {
-    color: purple;
-    font-size: 4rem;
-  }
-  .skill {
-    color: var(--skillColor);
-    font-weight: var(--fontWeight);
-    text-transform: var(--textCase);
-  }
-</style>

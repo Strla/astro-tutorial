@@ -1,92 +1,43 @@
-html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
+@import "tailwindcss";
+
+/* Tailwind directives with any additional custom styles needed */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Change the base theme for light and dark mode */
+@layer base {
+  :root {
+    /* Light mode defaults */
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    /* Dark mode colors */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
 }
 
+/* Ensure the dark class affects the color scheme */
 html.dark {
-  background-color: #0d0950;
-  color: #fff;
+  color-scheme: dark;
 }
 
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
+/* Add a debug class we can use to test dark mode */
+.theme-debug {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #ff9776;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  z-index: 9999;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
-}
-
-/* nav styles */
-
-.hamburger {
-  padding-right: 20px;
-  cursor: pointer;
-  display: block;
-}
-
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
-}
-
-.nav-links {
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: #ff9776;
-  display: none;
-  margin: 0;
-}
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.dark .nav-links a {
-  color: #fff;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-  background-color: #ff9776;
-}
-
-.expanded {
-  display: unset;
-}
-
-@media screen and (min-width: 636px) {
-  .hamburger {
-    display: none;
-  }
-  .nav-links {
-    margin-left: 5em;
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
-  }
+.dark .theme-debug {
+  background: #8b5cf6;
+  color: white;
 }

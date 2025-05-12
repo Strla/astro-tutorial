@@ -3,18 +3,27 @@ import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 import { getCollection } from "astro:content";
-const allPosts = await getCollection("blog");
 
+const allPosts = await getCollection("blog");
 const pageTitle = "My Astro Learning Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allPosts.map((post: any) => (
-        <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
-      ))
-    }
-  </ul>
+  <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+    This is where I will post about my journey learning Astro.
+  </p>
+
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h2 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">
+      Recent Posts
+    </h2>
+
+    <ul class="space-y-4">
+      {
+        allPosts.map((post) => (
+          <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+        ))
+      }
+    </ul>
+  </div>
 </BaseLayout>

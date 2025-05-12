@@ -1,10 +1,55 @@
 ---
-
+import "../styles/global.css";
 ---
 
-<div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Tags</a>
+<div class="flex flex-col">
+  <!-- Mobile Navigation -->
+  <div
+    class="nav-mobile hidden flex-col absolute top-20 left-0 w-full bg-orange-400 dark:bg-orange-500 rounded-md shadow-lg md:hidden"
+  >
+    <a
+      href="/"
+      class="py-3 px-6 text-center text-white font-bold uppercase hover:bg-orange-500 dark:hover:bg-orange-600"
+      >Home</a
+    >
+    <a
+      href="/about"
+      class="py-3 px-6 text-center text-white font-bold uppercase hover:bg-orange-500 dark:hover:bg-orange-600"
+      >About</a
+    >
+    <a
+      href="/blog"
+      class="py-3 px-6 text-center text-white font-bold uppercase hover:bg-orange-500 dark:hover:bg-orange-600"
+      >Blog</a
+    >
+    <a
+      href="/tags"
+      class="py-3 px-6 text-center text-white font-bold uppercase hover:bg-orange-500 dark:hover:bg-orange-600"
+      >Tags</a
+    >
+  </div>
+
+  <!-- Desktop Navigation -->
+  <div class="hidden md:flex md:space-x-6 text-gray-700 dark:text-gray-300">
+    <a
+      href="/"
+      class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors font-bold uppercase py-4"
+      >Home</a
+    >
+    <a
+      href="/about"
+      class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors font-bold uppercase py-4"
+      >About</a
+    >
+    <a
+      href="/blog"
+      class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors font-bold uppercase py-4"
+      >Blog</a
+    >
+    <a
+      href="/tags"
+      class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors font-bold uppercase py-4"
+      >Tags</a
+    >
+  </div>
 </div>

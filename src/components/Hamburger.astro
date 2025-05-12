@@ -1,9 +1,19 @@
 ---
-
+import "../styles/global.css";
 ---
 
-<div class="hamburger">
-  <span class="line"></span>
-  <span class="line"></span>
-  <span class="line"></span>
-</div>
+<button id="hamburger" aria-label="Menu" class="block md:hidden">
+  <span class="block w-10 h-1 mb-2 bg-orange-400 dark:bg-orange-400 rounded-sm"
+  ></span>
+  <span class="block w-10 h-1 mb-2 bg-orange-400 dark:bg-orange-400 rounded-sm"
+  ></span>
+  <span class="block w-10 h-1 bg-orange-400 dark:bg-orange-400 rounded-sm"
+  ></span>
+</button>
+
+<script>
+  document.getElementById("hamburger")?.addEventListener("click", () => {
+    document.querySelector(".nav-mobile")?.classList.toggle("hidden");
+    document.querySelector(".nav-mobile")?.classList.toggle("flex");
+  });
+</script>

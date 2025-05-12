@@ -1,14 +1,40 @@
 ---
+import "../styles/global.css";
 const { platform, username } = Astro.props;
+
+const getIcon = (platform: string) => {
+  switch (platform.toLowerCase()) {
+    case "github":
+      return "github";
+    case "twitter":
+      return "twitter";
+    case "linkedin":
+      return "linkedin";
+    default:
+      return "link";
+  }
+};
+
+const getColor = (platform: string) => {
+  switch (platform.toLowerCase()) {
+    case "github":
+      return "hover:text-gray-900 dark:hover:text-white";
+    case "twitter":
+      return "hover:text-blue-400";
+    case "linkedin":
+      return "hover:text-blue-700";
+    default:
+      return "hover:text-blue-600";
+  }
+};
 ---
 
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
-
-<style>
-  a {
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #4c1d95;
-    text-decoration: none;
-  }
-</style>
+<a
+  href={`https://www.${platform}.com/${username}`}
+  class={`text-gray-600 dark:text-gray-400 ${getColor(platform)} transition-colors`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <span class="sr-only">Follow on {platform}</span>
+  <span class="capitalize">{platform}</span>
+</a>
